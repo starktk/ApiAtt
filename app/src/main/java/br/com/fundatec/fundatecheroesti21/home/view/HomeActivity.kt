@@ -3,10 +3,9 @@ package br.com.fundatec.fundatecheroesti21.home.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import br.com.fundatec.core.hide
 import br.com.fundatec.fundatecheroesti21.databinding.ActivityHomeBinding
 import br.com.fundatec.fundatecheroesti21.heroRegister.view.HeroRegisterActivity
-import br.com.fundatec.fundatecheroesti21.profile.view.ProfileActivity
+
 
 class HomeActivity : AppCompatActivity() {
 
