@@ -44,6 +44,7 @@ class LoginViewModel : ViewModel() {
 
     private fun fetchLogin(email: String, password: String) {
         viewState.value = LoginViewState.ShowHomeScreen
+
         viewModelScope.launch {
             val isSuccess = usecase.login(email = email, password = password)
             if (isSuccess) {

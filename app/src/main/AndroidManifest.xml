@@ -27,6 +27,10 @@
             android:exported="false"/>
         <activity
             android:name=".login.view.LoginActivity"
+            android:exported="false"/>
+
+        <activity
+            android:name=".splashscreen.view.SplashScreenLog"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
