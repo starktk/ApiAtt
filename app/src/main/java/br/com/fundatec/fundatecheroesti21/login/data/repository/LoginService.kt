@@ -12,4 +12,5 @@ interface LoginService {
         @Query("email") email: String,
         @Query("password") password: String
     ): Response<LoginResponse>
+
 }

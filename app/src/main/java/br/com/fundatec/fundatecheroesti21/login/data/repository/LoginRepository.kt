@@ -8,8 +8,7 @@ import br.com.fundatec.fundatecheroesti21.network.RetrofitNetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import java.time.Instant
-import java.util.*
+import java.util.Date
 
 class
 LoginRepository {
@@ -35,16 +34,22 @@ LoginRepository {
 
         }
     }
-
-    private suspend fun validateCache(user: Response<UserEntity>) {
-        val dataCache: Date
-
-        if (database.userDao().getUser() > dataCache.time) {
-            
+    suspend fun validateCache(isTimeMaior: Boolean) {
+        val user = database.userDao().getUser()
+        val dataCache = database.userDao().getCache().time
+        val dataHoje = Date().time
+        val diff = dataHoje - dataCache
+        val seconds = diff / 1000
+        val minutes = seconds / 60
+        if (minutes > 10) {
+            cleanReuse(user, isTimeMaior)
         }
-
     }
 
+    private suspend fun cleanReuse(user: Response<LoginResponse>, isTimeMenor: Boolean): Boolean {
+        database.userDao().deletarCache()
+        return !isTimeMenor;
+    }
     private suspend fun saveUser(user: Response<LoginResponse>) {
         return withContext(Dispatchers.IO) {
             if (user.isSuccessful) {
