@@ -1,6 +1,6 @@
 package br.com.fundatec.fundatecheroesti21.network
 
-import br.com.fundatec.fundatecheroesti21.BuildConfig
+import br.com.fundatec.core.BuildConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient

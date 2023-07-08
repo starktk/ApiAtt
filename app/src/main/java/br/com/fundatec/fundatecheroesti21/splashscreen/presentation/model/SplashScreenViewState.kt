@@ -2,6 +2,6 @@ package br.com.fundatec.fundatecheroesti21.splashscreen.presentation.model
 
 sealed class SplashScreenViewState {
 
-    object ShowHomeScreen: SplashScreenViewState()
+    object isSucess: SplashScreenViewState()
     object ShowLoginScreen: SplashScreenViewState()
 }

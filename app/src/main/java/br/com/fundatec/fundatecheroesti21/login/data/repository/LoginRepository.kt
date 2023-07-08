@@ -45,6 +45,13 @@ LoginRepository {
             cleanReuse(user, isTimeMaior)
         }
     }
+    suspend fun userCheckExists(userExists:  Boolean): Boolean {
+        val user = database.userDao().getUser()
+        if (user == null) {
+            return !userExists
+        }
+        return true
+    }
 
     private suspend fun cleanReuse(user: Response<LoginResponse>, isTimeMenor: Boolean): Boolean {
         database.userDao().deletarCache()

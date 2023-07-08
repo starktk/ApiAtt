@@ -20,11 +20,18 @@ class SplashScreenLogViewModel : ViewModel() {
         viewModelScope.launch {
             viewState.value = SplashScreenViewState.ShowLoginScreen
 
+            val userExist: Boolean = true
+            usecase.verifyUserExist(userExist)
+            if(!userExist) {
+                viewState.value = SplashScreenViewState.ShowLoginScreen
+            }
+
             val isTimeMaior: Boolean = true
             usecase.verifyTimeLogCache(isTimeMaior)
             if (!isTimeMaior) {
-
+                viewState.value = SplashScreenViewState.ShowLoginScreen
             }
+
         }
     }
 }
