@@ -34,6 +34,20 @@ LoginRepository {
 
         }
     }
+    suspend fun createUser(name: String, email: String ,password: String): Boolean {
+        return withContext(Dispatchers.IO) {
+            try {
+                val response = client.createUser(name, email, password)
+                 saveUser(response)
+                response.isSuccessful
+            } catch (exception: Exception) {
+                Log.e("create", exception.message.orEmpty())
+                false
+            }
+        }
+
+    }
+
     suspend fun validateCache(isTimeMaior: Boolean) {
         val user = database.userDao().getUser()
         val dataCache = database.userDao().getCache().time

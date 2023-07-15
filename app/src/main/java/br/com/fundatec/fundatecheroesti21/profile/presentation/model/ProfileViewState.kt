@@ -7,4 +7,5 @@ sealed class ProfileViewState {
     object ShowHomeScreen : ProfileViewState()
     object ShowLoading : ProfileViewState()
     object ShowNameError : ProfileViewState()
+    object ShowErrorCreated : ProfileViewState()
 }

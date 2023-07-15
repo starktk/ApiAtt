@@ -16,4 +16,7 @@ class LoginUseCase {
         repository.userCheckExists(userExists);
         return userExists
     }
+    suspend fun createUser(name: String, email: String, password: String): Boolean {
+        return repository.createUser(name, email, password)
+    }
 }
