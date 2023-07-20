@@ -15,7 +15,7 @@ interface UserDao {
     fun insertUser(userEntity: UserEntity)
 
     @Query("SELECT dataLog FROM userTable")
-    fun getCache(): Date
+    fun getCache(): Date?
 
     @Query("SELECT * FROM userTable")
     fun getUser(): List<UserEntity>
@@ -23,6 +23,6 @@ interface UserDao {
     @Query("SELECT id FROM userTable")
     fun getId(): Int
 
-    @Query("DELETE  FROM userTable ")
+    @Query("DELETE from userTable")
     fun deletarCache()
 }

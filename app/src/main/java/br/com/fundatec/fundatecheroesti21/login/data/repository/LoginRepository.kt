@@ -8,7 +8,7 @@ import br.com.fundatec.fundatecheroesti21.network.RetrofitNetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
-import java.util.Date
+import java.util.*
 
 class LoginRepository {
     private val database: FHdatabase by lazy {
@@ -50,22 +50,23 @@ class LoginRepository {
 
     suspend fun validateCache(isTimeMaior: Boolean): Boolean {
         return withContext(Dispatchers.IO) {
-        val user: List<UserEntity> = database.userDao().getUser()
-        val dataCache = database.userDao().getCache().time
-        val dataHoje = Date().time
-        val diff = dataHoje - dataCache
-        val seconds = diff / 1000
-        val minutes = seconds / 60
-        if (minutes > 5) {
-            cleanReuse(user, isTimeMaior)
-        }
-        isTimeMaior
+            val user: List<UserEntity> = database.userDao().getUser()
+            val dataCache = database.userDao().getCache()?.time?:0
+            val dataHoje = Date().time
+            val diff = dataHoje - dataCache
+            val seconds = diff / 1000
+            val minutes = seconds / 60
+            if (minutes > 10) {
+                cleanReuse(isTimeMaior)
+            }
+            isTimeMaior
         }
     }
 
-    private fun cleanReuse(user: List<UserEntity>, isTimeMenor: Boolean): Boolean {
+    private fun cleanReuse(isTimeMenor: Boolean): Boolean {
         database.userDao().deletarCache()
         return !isTimeMenor;
+
     }
 
     suspend fun userCheckExists(userExists: Boolean): Boolean {
