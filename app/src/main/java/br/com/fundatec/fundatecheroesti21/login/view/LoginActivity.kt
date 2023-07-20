@@ -46,6 +46,7 @@ class LoginActivity : AppCompatActivity() {
                 LoginViewState.ShowEmailErrorMessage -> showEmailError()
                 LoginViewState.ShowPasswordErrorMessage -> showPasswordError()
                 LoginViewState.ShowLoading -> showLoading()
+                LoginViewState.ShowProfileScreen -> showProfile()
             }
         }
     }
@@ -78,8 +79,10 @@ class LoginActivity : AppCompatActivity() {
 
     private fun showProfile(){
         binding.pbLoading.hide()
-        val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
-        startActivity(intent)
-        finish()
+        binding.tvNewHere.setOnClickListener {
+            val intent = Intent(this@LoginActivity, ProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 }

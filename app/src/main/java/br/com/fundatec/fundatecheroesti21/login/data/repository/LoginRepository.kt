@@ -10,8 +10,7 @@ import kotlinx.coroutines.withContext
 import retrofit2.Response
 import java.util.Date
 
-class
-LoginRepository {
+class LoginRepository {
     private val database: FHdatabase by lazy {
         FHdatabase.getInstance()
     }
@@ -34,11 +33,12 @@ LoginRepository {
 
         }
     }
-    suspend fun createUser(name: String, email: String ,password: String): Boolean {
+
+    suspend fun createUser(name: String, email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             try {
                 val response = client.createUser(name, email, password)
-                 saveUser(response)
+                saveUser(response)
                 response.isSuccessful
             } catch (exception: Exception) {
                 Log.e("create", exception.message.orEmpty())
@@ -48,29 +48,36 @@ LoginRepository {
 
     }
 
-    suspend fun validateCache(isTimeMaior: Boolean) {
-        val user = database.userDao().getUser()
+    suspend fun validateCache(isTimeMaior: Boolean): Boolean {
+        return withContext(Dispatchers.IO) {
+        val user: List<UserEntity> = database.userDao().getUser()
         val dataCache = database.userDao().getCache().time
         val dataHoje = Date().time
         val diff = dataHoje - dataCache
         val seconds = diff / 1000
         val minutes = seconds / 60
-        if (minutes > 10) {
+        if (minutes > 5) {
             cleanReuse(user, isTimeMaior)
         }
-    }
-    suspend fun userCheckExists(userExists:  Boolean): Boolean {
-        val user = database.userDao().getUser()
-        if (user == null) {
-            return !userExists
+        isTimeMaior
         }
-        return true
     }
 
-    private suspend fun cleanReuse(user: Response<LoginResponse>, isTimeMenor: Boolean): Boolean {
+    private fun cleanReuse(user: List<UserEntity>, isTimeMenor: Boolean): Boolean {
         database.userDao().deletarCache()
         return !isTimeMenor;
     }
+
+    suspend fun userCheckExists(userExists: Boolean): Boolean {
+        return withContext(Dispatchers.IO) {
+            val user = database.userDao().getUser()
+            if (user == null) {
+                !userExists
+            }
+            true
+        }
+    }
+
     private suspend fun saveUser(user: Response<LoginResponse>) {
         return withContext(Dispatchers.IO) {
             if (user.isSuccessful) {

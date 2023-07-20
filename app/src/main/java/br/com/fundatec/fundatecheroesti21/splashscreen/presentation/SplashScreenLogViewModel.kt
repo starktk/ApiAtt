@@ -30,6 +30,8 @@ class SplashScreenLogViewModel : ViewModel() {
             usecase.verifyTimeLogCache(isTimeMaior)
             if (!isTimeMaior) {
                 viewState.value = SplashScreenViewState.ShowLoginScreen
+            } else {
+                viewState.value = SplashScreenViewState.isSucess
             }
 
         }

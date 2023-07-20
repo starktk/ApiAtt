@@ -1,13 +1,13 @@
 package br.com.fundatec.fundatecheroesti21.database
 
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.room.*
 import br.com.fundatec.fundatecheroesti21.App
+import br.com.fundatec.fundatecheroesti21.database.converters.Converter
 import br.com.fundatec.fundatecheroesti21.login.data.local.UserDao
 import br.com.fundatec.fundatecheroesti21.login.data.local.UserEntity
 
 @Database(entities = [UserEntity::class], version = 2)
+@TypeConverters(Converter::class)
 abstract class FHdatabase: RoomDatabase() {
 
     abstract fun userDao(): UserDao

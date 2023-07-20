@@ -26,13 +26,14 @@ class SplashScreenLog: AppCompatActivity() {
         supportActionBar?.hide()
 
         initializeObserver()
+        viewModel.validadeCache()
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            viewModel.validadeCache()
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 3000)
+//        Handler(Looper.getMainLooper()).postDelayed({
+//            viewModel.validadeCache()
+//            val intent = Intent(this, LoginActivity::class.java)
+//            startActivity(intent)
+//            finish()
+//        }, 3000)
     }
 
     private fun initializeObserver() {
@@ -43,6 +44,7 @@ class SplashScreenLog: AppCompatActivity() {
             }
         }
     }
+
 
     private fun showLoginScreen() {
         val intent = Intent(this@SplashScreenLog, LoginActivity::class.java)

@@ -57,7 +57,6 @@ class ProfileViewModel : ViewModel() {
                 viewState.value = ProfileViewState.ShowHomeScreen
             } else {
                 viewState.value = ProfileViewState.ShowErrorCreated
-
             }
         }
     }
