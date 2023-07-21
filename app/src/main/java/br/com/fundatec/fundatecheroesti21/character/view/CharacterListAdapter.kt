@@ -3,7 +3,7 @@ package br.com.fundatec.fundatecheroesti21.character.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import br.com.fundatec.fundatecheroesti21.character.domain.CharacterModel
+import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterModel
 import br.com.fundatec.fundatecheroesti21.databinding.CharacterListItemBinding
 
 class CharacterListAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
@@ -18,7 +18,6 @@ class CharacterListAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
     override fun getItemCount(): Int {
         return list.size
     }
-
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
         holder.bind(list[position])
     }
@@ -27,4 +26,6 @@ class CharacterListAdapter : RecyclerView.Adapter<CharacterViewHolder>() {
         list.addAll(items)
         notifyDataSetChanged()
     }
+
+
 }

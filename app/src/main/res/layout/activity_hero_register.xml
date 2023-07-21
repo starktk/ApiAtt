@@ -113,7 +113,7 @@
             app:layout_constraintVertical_chainStyle="packed">
 
             <Spinner
-                android:id="@+id/select_company"
+                android:id="@+id/select_universe"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginHorizontal="40dp"

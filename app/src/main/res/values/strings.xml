@@ -1,11 +1,11 @@
 <resources>
     <string-array name="heroes">
-        <item>Selecione</item>
+        <item>Tipo</item>
         <item>Herói</item>
         <item>Vilão</item>
     </string-array>
     <string-array name="universe">
-        <item>Selecione</item>
+        <item>Universe</item>
         <item>Marvel</item>
         <item>DC</item>
     </string-array>

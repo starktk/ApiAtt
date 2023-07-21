@@ -24,12 +24,16 @@ class HeroRegisterActivity : AppCompatActivity() {
 
         initializeObserver()
 
+
         binding.floatingButton.setOnClickListener {
             viewModel.validateInputs(
                 name = binding.nameHero.text.toString(),
                 description = binding.description.text.toString(),
                 age = binding.age.text.toString(),
-                birth_date = binding.birthDate.text.toString()
+                birth_date = binding.birthDate.text.toString(),
+                select_heroType = binding.selectHero.onItemSelectedListener.toString(),
+                select_univerType = binding.selectUniverse.onItemSelectedListener.toString(),
+                url_image = binding.imgHero.text.toString()
             )
         }
     }
@@ -44,8 +48,29 @@ class HeroRegisterActivity : AppCompatActivity() {
                 HeroRegisterViewState.ShowDescriptionError -> showDescriptionError()
                 HeroRegisterViewState.ShowAgeError -> showAgeError()
                 HeroRegisterViewState.ShowBirthDateError -> showBirthDateError()
+                HeroRegisterViewState.ShowisSucess -> showIsSucess()
+                HeroRegisterViewState.ShowSelectUniverseTypeError -> showSelectUniverseTypeError()
+                HeroRegisterViewState.ShowSelectHeroTypeError -> showSelectHeroType()
+                HeroRegisterViewState.ShowUrlImageError -> showUrlImageError()
+
             }
         }
+    }
+
+    private fun showUrlImageError() {
+        TODO("Not yet implemented")
+    }
+
+    private fun showSelectHeroType() {
+        TODO("Not yet implemented")
+    }
+
+    private fun showSelectUniverseTypeError() {
+        TODO("Not yet implemented")
+    }
+
+    private fun showIsSucess() {
+        TODO("Not yet implemented")
     }
 
     private fun showLoading() {

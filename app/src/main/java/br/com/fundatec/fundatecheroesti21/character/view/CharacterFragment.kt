@@ -1,12 +1,11 @@
-package br.com.fundatec.fundatecheroesti21.character
+package br.com.fundatec.fundatecheroesti21.character.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import br.com.fundatec.fundatecheroesti21.character.domain.CharacterModel
-import br.com.fundatec.fundatecheroesti21.character.view.CharacterListAdapter
+import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterModel
 import br.com.fundatec.fundatecheroesti21.databinding.FragmentCharacterBinding
 
 private const val ARG_PARAM1 = "param1"
@@ -43,4 +42,6 @@ class CharacterFragment : Fragment() {
                 }
             }
     }
+
+
 }

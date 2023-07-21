@@ -25,4 +25,5 @@ interface UserDao {
 
     @Query("DELETE from userTable")
     fun deletarCache()
+
 }

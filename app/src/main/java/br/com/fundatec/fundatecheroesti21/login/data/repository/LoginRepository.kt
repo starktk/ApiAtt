@@ -63,6 +63,13 @@ class LoginRepository {
         }
     }
 
+    suspend fun getUsuario(): Int {
+        return withContext(Dispatchers.IO) {
+            val id: Int = database.userDao().getId()
+            id
+        }
+    }
+
     private fun cleanReuse(isTimeMenor: Boolean): Boolean {
         database.userDao().deletarCache()
         return !isTimeMenor;
