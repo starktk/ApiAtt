@@ -17,9 +17,10 @@ class CharacterRepository {
             .create(CharacterService::class.java)
 
 
-    suspend fun addPersonagem(id: Int, characterRequest: CharacterRequest) {
+    suspend fun addPersonagem(id: Int, characterRequest: CharacterRequest): Boolean {
         return withContext(Dispatchers.IO) {
             val response = client.criarPersonagem(id, characterRequest)
+            response.isSuccessful
         }
     }
 }

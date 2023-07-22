@@ -10,7 +10,7 @@ interface CharacterService {
     suspend fun criarPersonagem(
         @Path("id") id: Int,
         @Body characterRequest: CharacterRequest
-    )
+    ): Response<CharacterRequest>
 
     @GET("api/character/{id}")
     suspend fun getPersonagens(@Path ("id") id: Int): Response<CharacterResponse>

@@ -48,7 +48,6 @@ class HeroRegisterActivity : AppCompatActivity() {
                 HeroRegisterViewState.ShowDescriptionError -> showDescriptionError()
                 HeroRegisterViewState.ShowAgeError -> showAgeError()
                 HeroRegisterViewState.ShowBirthDateError -> showBirthDateError()
-                HeroRegisterViewState.ShowisSucess -> showIsSucess()
                 HeroRegisterViewState.ShowSelectUniverseTypeError -> showSelectUniverseTypeError()
                 HeroRegisterViewState.ShowSelectHeroTypeError -> showSelectHeroType()
                 HeroRegisterViewState.ShowUrlImageError -> showUrlImageError()
@@ -58,19 +57,18 @@ class HeroRegisterActivity : AppCompatActivity() {
     }
 
     private fun showUrlImageError() {
-        TODO("Not yet implemented")
+        binding.pbLoading.hide()
+        binding.age.error = getString(R.string.url_error_message)
     }
 
     private fun showSelectHeroType() {
-        TODO("Not yet implemented")
+        binding.pbLoading.hide()
+        binding.age.error = getString(R.string.hero_error_message)
     }
 
     private fun showSelectUniverseTypeError() {
-        TODO("Not yet implemented")
-    }
-
-    private fun showIsSucess() {
-        TODO("Not yet implemented")
+        binding.pbLoading.hide()
+        binding.age.error = getString(R.string.universe_error_message)
     }
 
     private fun showLoading() {

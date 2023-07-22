@@ -84,19 +84,22 @@ class HeroesRegisterViewModel : ViewModel() {
     }
 
     private fun fetchLogin(name: String, description: String, age: String, birth_date: String,
-                           select_heroType: String, select_univerType: String, url_image: String) {
-        select_heroType.uppercase()
-        select_univerType.uppercase()
-        url_image.uppercase()
-        val agemodify =  age.toInt()
-        register(name, description, agemodify, birth_date, select_heroType, select_univerType, url_image)
+                           select_heroType: String, select_univerType: String, url_image: String): Boolean {
+        val intermediario = register(name, description, age.toInt(), birth_date,
+            select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
+         if (intermediario == false) {
+
+         }
     }
 
     private fun register(name: String, description: String, age: Int, birth_date: String,
-                         select_heroType: String, select_univerType: String, url_image: String) {
+                         select_heroType: String, select_univerType: String, url_image: String): Boolean {
         viewModelScope.launch {
             usecase.adicionarPersonagem(name, description, age, birth_date,
                 select_heroType, select_univerType, url_image)
         }
+
+
+
     }
 }
