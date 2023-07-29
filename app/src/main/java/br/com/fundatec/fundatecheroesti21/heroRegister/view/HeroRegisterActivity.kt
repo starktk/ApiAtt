@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import br.com.fundatec.core.errorMessages
 import br.com.fundatec.core.hide
 import br.com.fundatec.core.show
 import br.com.fundatec.fundatecheroesti21.R
@@ -51,9 +52,14 @@ class HeroRegisterActivity : AppCompatActivity() {
                 HeroRegisterViewState.ShowSelectUniverseTypeError -> showSelectUniverseTypeError()
                 HeroRegisterViewState.ShowSelectHeroTypeError -> showSelectHeroType()
                 HeroRegisterViewState.ShowUrlImageError -> showUrlImageError()
-
+                HeroRegisterViewState.ShowActionError -> showActionError()
             }
         }
+    }
+
+    private fun showActionError() {
+        binding.pbLoading.hide()
+        errorMessages(binding.root, getString(R.string.action_error))
     }
 
     private fun showUrlImageError() {

@@ -84,22 +84,19 @@ class HeroesRegisterViewModel : ViewModel() {
     }
 
     private fun fetchLogin(name: String, description: String, age: String, birth_date: String,
-                           select_heroType: String, select_univerType: String, url_image: String): Boolean {
-        val intermediario = register(name, description, age.toInt(), birth_date,
-            select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
-         if (intermediario == false) {
+                           select_heroType: String, select_univerType: String, url_image: String) {
+//        val intermediario = register(name, description, age.toInt(), birth_date,
+//            select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
 
-         }
-    }
-
-    private fun register(name: String, description: String, age: Int, birth_date: String,
-                         select_heroType: String, select_univerType: String, url_image: String): Boolean {
         viewModelScope.launch {
-            usecase.adicionarPersonagem(name, description, age, birth_date,
-                select_heroType, select_univerType, url_image)
+            val isSucess = usecase.adicionarPersonagem(name, description, age.toInt(), birth_date,
+                select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
+            if (isSucess) {
+                viewState.value = HeroRegisterViewState.ShowHomeScreen
+            } else {
+                viewState.value = HeroRegisterViewState.ShowActionError
+            }
         }
-
-
 
     }
 }

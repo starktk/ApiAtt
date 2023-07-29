@@ -11,4 +11,5 @@ sealed class HeroRegisterViewState {
     object ShowUrlImageError : HeroRegisterViewState()
     object ShowSelectHeroTypeError : HeroRegisterViewState()
     object ShowSelectUniverseTypeError : HeroRegisterViewState()
+    object ShowActionError : HeroRegisterViewState()
 }

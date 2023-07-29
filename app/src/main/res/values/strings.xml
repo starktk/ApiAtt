@@ -30,12 +30,12 @@
     <string name="register_birthDate_error_message">Data inválida</string>
     <string name="register_email_error_message">E-mail inválido</string>
     <string name="register_pdw_error_message">Senha inválida</string>
+    <string name="action_error"> Algo deu errado! </string>
     <string name="error_creation">Algo de erraco aconteceu</string>
     <string name="url_error_message">Url inválida</string>
     <string name="hero_error_message">Selecione um tipo de heroi</string>
     <string name="universe_error_message">Selecione um universo</string>
     <string name="home">Home</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="register">Register</string>
     <string name="name">Name</string>
