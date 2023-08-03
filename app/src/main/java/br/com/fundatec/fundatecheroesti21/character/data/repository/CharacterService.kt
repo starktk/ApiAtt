@@ -4,6 +4,7 @@ import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterRespons
 import retrofit2.Response
 import retrofit2.http.*
 
+
 interface CharacterService {
 
     @POST("api/character/{id}")

@@ -50,13 +50,12 @@ class LoginRepository {
 
     suspend fun validateCache(isTimeMaior: Boolean): Boolean {
         return withContext(Dispatchers.IO) {
-            val user: List<UserEntity> = database.userDao().getUser()
             val dataCache = database.userDao().getCache()?.time?:0
             val dataHoje = Date().time
             val diff = dataHoje - dataCache
             val seconds = diff / 1000
             val minutes = seconds / 60
-            if (minutes > 10) {
+            if (minutes <= 10) {
                 cleanReuse(isTimeMaior)
             }
             isTimeMaior
