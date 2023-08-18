@@ -5,7 +5,6 @@ import java.util.*
 
 @JsonClass(generateAdapter = true)
 data class CharacterResponse (
-
         val name: String,
         val description: String,
         val image: String,
