@@ -16,13 +16,15 @@ class SplashScreenLogViewModel : ViewModel() {
     val state: LiveData<SplashScreenViewState> = viewState
 
 
+
     fun validadeCache() {
+
         viewModelScope.launch {
             viewState.value = SplashScreenViewState.ShowLoginScreen
 
             val userExist: Boolean = true
             usecase.verifyUserExist(userExist)
-            if(!userExist) {
+            if (!userExist) {
                 viewState.value = SplashScreenViewState.ShowLoginScreen
             }
 
