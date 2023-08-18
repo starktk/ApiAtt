@@ -15,9 +15,9 @@ class CharacterFragment : Fragment() {
     private lateinit var binding: FragmentCharacterBinding
 
     private val adapter by lazy { CharacterListAdapter() }
-    private val list = listOf(
-
-    )
+//    private val list = listOf(
+//
+//    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

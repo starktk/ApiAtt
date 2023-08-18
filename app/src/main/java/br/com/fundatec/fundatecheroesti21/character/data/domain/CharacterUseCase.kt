@@ -1,5 +1,6 @@
 package br.com.fundatec.fundatecheroesti21.character.data.domain
 
+import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterModel
 import br.com.fundatec.fundatecheroesti21.character.data.repository.CharacterRepository
 import br.com.fundatec.fundatecheroesti21.character.data.repository.CharacterRequest
 import br.com.fundatec.fundatecheroesti21.login.domain.LoginUseCase
@@ -32,5 +33,9 @@ class CharacterUseCase {
             select_heroType,
             age,
             url_image)
+    }
+    private suspend fun pegarPersonagem(): List<CharacterModel> {
+        val id = getReferenceUser()
+        return characterRepository.getPersonagens(id)
     }
 }

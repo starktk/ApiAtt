@@ -28,26 +28,27 @@ class CharacterRepository {
         }
     }
 
-    suspend fun getPersonagens(id: Int): CharacterModel {
+    suspend fun getPersonagens(id: Int): List<CharacterModel> {
           return withContext(Dispatchers.IO) {
             try {
-                val characterReturn: Response<CharacterResponse> = client.getPersonagens(id)
-                mapperPersonagem(characterReturn)
+                val characterReturn = client.getPersonagens(id)
+                if (characterReturn.isSuccessful){
+                    characterReturn.body()?.mapperPersonagem() ?: emptyList()
+                } else {
+                    emptyList()
+                }
 
             } catch (exception: Exception) {
                 Log.e("listar personagem", exception.message.orEmpty())
-                false
+                emptyList()
             }
-
         }
     }
 
 
-    private suspend fun mapperPersonagem(character: Response<CharacterResponse>): CharacterModel {
-        return withContext(Dispatchers.IO) {
-                character.body().run {
-                    this!!.characterResponseToCharacterModel()
-                }
+    private fun List<CharacterResponse>.mapperPersonagem(): List<CharacterModel> {
+        return map {
+            it.characterResponseToCharacterModel()
         }
     }
 
