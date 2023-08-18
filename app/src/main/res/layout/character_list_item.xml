@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="#CCC7C7">
@@ -16,11 +16,27 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Nome do personagem" />
 
+
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
             app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_url"
+            android:layout_width="9dp"
+            android:layout_height="0dp"
+            android:layout_marginTop_toBottomOf="@id/tv_name"
+            android:layout_marginStart_toStartOf="parent"
+            tools:text=""/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

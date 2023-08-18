@@ -16,7 +16,7 @@ class CharacterFragment : Fragment() {
 
     private val adapter by lazy { CharacterListAdapter() }
     private val list = listOf(
-        CharacterModel("Superman"), CharacterModel("Batman"), CharacterModel("Flash")
+
     )
 
     override fun onCreateView(

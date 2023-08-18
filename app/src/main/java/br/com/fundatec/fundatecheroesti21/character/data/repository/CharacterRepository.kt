@@ -1,9 +1,13 @@
 package br.com.fundatec.fundatecheroesti21.character.data.repository
 
+import android.util.Log
+import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterModel
+import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterResponse
 import br.com.fundatec.fundatecheroesti21.database.FHdatabase
 import br.com.fundatec.fundatecheroesti21.network.RetrofitNetworkClient
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Response
 
 class CharacterRepository {
 
@@ -22,5 +26,35 @@ class CharacterRepository {
             val response = client.criarPersonagem(id, characterRequest)
             response.isSuccessful
         }
+    }
+
+    suspend fun getPersonagens(id: Int): CharacterModel {
+          return withContext(Dispatchers.IO) {
+            try {
+                val characterReturn: Response<CharacterResponse> = client.getPersonagens(id)
+                mapperPersonagem(characterReturn)
+
+            } catch (exception: Exception) {
+                Log.e("listar personagem", exception.message.orEmpty())
+                false
+            }
+
+        }
+    }
+
+
+    private suspend fun mapperPersonagem(character: Response<CharacterResponse>): CharacterModel {
+        return withContext(Dispatchers.IO) {
+                character.body().run {
+                    this!!.characterResponseToCharacterModel()
+                }
+        }
+    }
+
+    private fun CharacterResponse.characterResponseToCharacterModel(): CharacterModel {
+        return CharacterModel(
+            name = name,
+            url = image
+        )
     }
 }
