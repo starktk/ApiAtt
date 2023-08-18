@@ -16,6 +16,7 @@ class SplashScreenLogViewModel : ViewModel() {
     val state: LiveData<SplashScreenViewState> = viewState
 
 
+
     fun validadeCache() {
 
         viewModelScope.launch {

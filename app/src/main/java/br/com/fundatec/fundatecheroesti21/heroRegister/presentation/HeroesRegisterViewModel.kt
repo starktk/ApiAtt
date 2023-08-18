@@ -18,10 +18,10 @@ class HeroesRegisterViewModel : ViewModel() {
     fun validateInputs(name: String?, description: String?, age: String?, birth_date: String?,
                        select_heroType: String?, select_univerType: String?, url_image: String) {
         var patternAge = Pattern.compile("[0-9]")
-        var matcherAge = patternAge.matcher(age)
+        var matcherAge = patternAge.matcher(age.toString())
 
         var patternBirthDate = Pattern.compile("\\d{2}[-\\/\\.]\\d{2}[-\\/\\.]\\d{4}|\\d{8}")
-        var matcherBirthDate = patternBirthDate.matcher(birth_date)
+        var matcherBirthDate = patternBirthDate.matcher(birth_date.toString())
 
         var patternUrlImage =  Pattern.compile("((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)");
         var matcherUrlImage = patternUrlImage.matcher(url_image)

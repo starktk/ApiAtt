@@ -10,5 +10,6 @@ CharacterViewHolder(private val binding: CharacterListItemBinding) :
 
     fun bind(character: CharacterModel) {
         binding.tvName.text = character.name
+        binding
     }
 }
