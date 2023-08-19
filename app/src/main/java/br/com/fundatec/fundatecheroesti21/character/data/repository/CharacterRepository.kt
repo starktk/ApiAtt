@@ -23,8 +23,13 @@ class CharacterRepository {
 
     suspend fun addPersonagem(id: Int, characterRequest: CharacterRequest): Boolean {
         return withContext(Dispatchers.IO) {
-            val response = client.criarPersonagem(id, characterRequest)
-            response.isSuccessful
+            try  {
+                val response = client.criarPersonagem(id, characterRequest)
+                response.isSuccessful
+            } catch (exception: Exception) {
+                Log.e("criar Personagem", exception.message.orEmpty())
+                false
+            }
         }
     }
 

@@ -42,7 +42,7 @@ class HeroRegisterActivity : AppCompatActivity() {
     private fun initializeObserver() {
         viewModel.state.observe(this) { viewState ->
             when (viewState) {
-                is HeroRegisterViewState.ShowHomeScreen -> showHome()
+                HeroRegisterViewState.ShowHomeScreen -> showHome()
                 HeroRegisterViewState.ShowLoading -> showLoading()
                 HeroRegisterViewState.ShowNameError -> showNameError()
                 HeroRegisterViewState.ShowMessageError -> showSnackError()

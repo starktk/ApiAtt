@@ -90,10 +90,10 @@ class HeroesRegisterViewModel : ViewModel() {
         viewModelScope.launch {
             val isSucess = usecase.adicionarPersonagem(name, description, age.toInt(), birth_date,
                 select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
-            if (isSucess) {
-                viewState.value = HeroRegisterViewState.ShowHomeScreen
-            } else {
+            if (!isSucess) {
                 viewState.value = HeroRegisterViewState.ShowActionError
+            } else {
+                viewState.value = HeroRegisterViewState.ShowHomeScreen
             }
         }
 
