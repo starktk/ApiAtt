@@ -34,7 +34,7 @@ class CharacterUseCase {
             age,
             url_image)
     }
-    private suspend fun pegarPersonagem(): List<CharacterModel> {
+    suspend fun pegarPersonagem(): List<CharacterModel> {
         val id = getReferenceUser()
         return characterRepository.getPersonagens(id)
     }

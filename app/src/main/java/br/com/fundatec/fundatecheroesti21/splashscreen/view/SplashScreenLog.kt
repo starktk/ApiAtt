@@ -23,38 +23,28 @@ class SplashScreenLog: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log)
 
-        supportActionBar?.hide()
-
-        initializeObserver()
-        viewModel.validadeCache()
-
-//        Handler(Looper.getMainLooper()).postDelayed({
-//            viewModel.validadeCache()
-//            val intent = Intent(this, LoginActivity::class.java)
-//            startActivity(intent)
-//            finish()
-//        }, 3000)
-    }
-
-    private fun initializeObserver() {
         viewModel.state.observe(this) { viewState ->
             when (viewState) {
-                SplashScreenViewState.isSucess -> isSucess()
-                SplashScreenViewState.ShowLoginScreen -> showLoginScreen()
+                    SplashScreenViewState.ShowLoginScreen -> showLoginScreen()
+                    SplashScreenViewState.isSucess -> isSucess()
+                }
             }
-        }
+
+
+
+
     }
+
+
 
 
     private fun showLoginScreen() {
-        val intent = Intent(this@SplashScreenLog, LoginActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this@SplashScreenLog, LoginActivity::class.java))
         finish()
     }
 
     fun isSucess() {
-        val intent = Intent(this@SplashScreenLog, HomeActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this@SplashScreenLog, HomeActivity::class.java))
         finish()
     }
 }

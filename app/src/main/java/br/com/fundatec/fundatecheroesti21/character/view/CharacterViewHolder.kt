@@ -3,6 +3,7 @@ package br.com.fundatec.fundatecheroesti21.character.view
 import androidx.recyclerview.widget.RecyclerView
 import br.com.fundatec.fundatecheroesti21.character.data.remote.CharacterModel
 import br.com.fundatec.fundatecheroesti21.databinding.CharacterListItemBinding
+import com.bumptech.glide.Glide
 
 class
 CharacterViewHolder(private val binding: CharacterListItemBinding) :
@@ -10,6 +11,8 @@ CharacterViewHolder(private val binding: CharacterListItemBinding) :
 
     fun bind(character: CharacterModel) {
         binding.tvName.text = character.name
-        binding
+        Glide.with(binding.root.context)
+            .load(character.url)
+            .into(binding.imgHeroe)
     }
 }

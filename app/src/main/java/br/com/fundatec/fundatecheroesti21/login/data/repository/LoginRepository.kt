@@ -48,17 +48,9 @@ class LoginRepository {
 
     }
 
-    suspend fun validateCache(isTimeMaior: Boolean): Boolean {
+    suspend fun validateCache() : Date?{
         return withContext(Dispatchers.IO) {
-            val dataCache = database.userDao().getCache()?.time?:0
-            val dataHoje = Date().time
-            val diff = dataHoje - dataCache
-            val seconds = diff / 1000
-            val minutes = seconds / 60
-            if (minutes <= 10) {
-                cleanReuse(isTimeMaior)
-            }
-            isTimeMaior
+            database.userDao().getCache()
         }
     }
 
@@ -69,17 +61,17 @@ class LoginRepository {
         }
     }
 
-    private fun cleanReuse(isTimeMenor: Boolean): Boolean {
-        database.userDao().deletarCache()
-        return !isTimeMenor;
-
+    suspend fun cleanReuse(){
+        return withContext(Dispatchers.IO) {
+            database.userDao().deletarCache()
+        }
     }
 
-    suspend fun userCheckExists(userExists: Boolean): Boolean {
+    suspend fun userCheckExists(): Boolean {
         return withContext(Dispatchers.IO) {
             val user = database.userDao().getUser()
             if (user == null) {
-                !userExists
+                false
             }
             true
         }
