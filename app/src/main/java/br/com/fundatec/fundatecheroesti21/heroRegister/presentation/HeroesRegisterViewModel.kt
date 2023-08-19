@@ -85,8 +85,7 @@ class HeroesRegisterViewModel : ViewModel() {
 
     private fun fetchLogin(name: String, description: String, age: String, birth_date: String,
                            select_heroType: String, select_univerType: String, url_image: String) {
-//        val intermediario = register(name, description, age.toInt(), birth_date,
-//            select_heroType.uppercase(), select_univerType.uppercase(), url_image.uppercase())
+
 
         viewModelScope.launch {
             val isSucess = usecase.adicionarPersonagem(name, description, age.toInt(), birth_date,
