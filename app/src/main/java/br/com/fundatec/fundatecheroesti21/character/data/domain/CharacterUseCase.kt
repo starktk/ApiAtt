@@ -32,8 +32,7 @@ class CharacterUseCase {
             select_univerType,
             select_heroType,
             age,
-            birth_date,
-            url_image)
+            birth_date)
     }
     suspend fun pegarPersonagem(): List<CharacterModel> {
         val id = getReferenceUser()

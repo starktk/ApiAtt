@@ -3,6 +3,7 @@ package br.com.fundatec.fundatecheroesti21.login.data.repository;
 import android.util.Log
 import br.com.fundatec.fundatecheroesti21.database.FHdatabase
 import br.com.fundatec.fundatecheroesti21.login.data.local.UserEntity
+import br.com.fundatec.fundatecheroesti21.login.data.local.UserRequest
 import br.com.fundatec.fundatecheroesti21.login.data.remote.LoginResponse
 import br.com.fundatec.fundatecheroesti21.network.RetrofitNetworkClient
 import kotlinx.coroutines.Dispatchers
@@ -37,8 +38,7 @@ class LoginRepository {
     suspend fun createUser(name: String, email: String, password: String): Boolean {
         return withContext(Dispatchers.IO) {
             try {
-                val response = client.createUser(name, email, password)
-                saveUser(response)
+                val response = client.createUser(UserRequest(name, email, password))
                 response.isSuccessful
             } catch (exception: Exception) {
                 Log.e("create", exception.message.orEmpty())
@@ -48,7 +48,7 @@ class LoginRepository {
 
     }
 
-    suspend fun validateCache() : Date?{
+    suspend fun validateCache(): Date? {
         return withContext(Dispatchers.IO) {
             database.userDao().getCache()
         }
@@ -61,7 +61,7 @@ class LoginRepository {
         }
     }
 
-    suspend fun cleanReuse(){
+    suspend fun cleanReuse() {
         return withContext(Dispatchers.IO) {
             database.userDao().deletarCache()
         }
@@ -91,6 +91,7 @@ class LoginRepository {
 
     private fun LoginResponse.userResponseToEntity(): UserEntity {
         return UserEntity(
+            id = id,
             name = name,
             email = email,
             password = password,

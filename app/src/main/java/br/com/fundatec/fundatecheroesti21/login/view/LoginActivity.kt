@@ -47,6 +47,7 @@ class LoginActivity : AppCompatActivity() {
                 LoginViewState.ShowPasswordErrorMessage -> showPasswordError()
                 LoginViewState.ShowLoading -> showLoading()
                 LoginViewState.ShowProfileScreen -> showProfile()
+                else -> {}
             }
         }
     }

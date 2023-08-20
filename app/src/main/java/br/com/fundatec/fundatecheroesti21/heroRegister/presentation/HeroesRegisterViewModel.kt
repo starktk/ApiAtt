@@ -17,14 +17,8 @@ class HeroesRegisterViewModel : ViewModel() {
 
     fun validateInputs(name: String?, description: String?, age: String?, birth_date: String?,
                        select_heroType: String?, select_univerType: String?, url_image: String) {
-        var patternAge = Pattern.compile("[0-9]")
-        var matcherAge = patternAge.matcher(age.toString())
-
         var patternBirthDate = Pattern.compile("\\d{2}[-\\/\\.]\\d{2}[-\\/\\.]\\d{4}|\\d{8}")
         var matcherBirthDate = patternBirthDate.matcher(birth_date.toString())
-
-        var patternUrlImage =  Pattern.compile("((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)");
-        var matcherUrlImage = patternUrlImage.matcher(url_image)
 
         viewState.value = HeroRegisterViewState.ShowLoading
 
@@ -41,10 +35,6 @@ class HeroesRegisterViewModel : ViewModel() {
         }
         if (description.isNullOrBlank()) {
             viewState.value = HeroRegisterViewState.ShowDescriptionError
-            return
-        }
-        if (!matcherAge.matches()) {
-            viewState.value = HeroRegisterViewState.ShowAgeError
             return
         }
 
@@ -72,12 +62,6 @@ class HeroesRegisterViewModel : ViewModel() {
             viewState.value = HeroRegisterViewState.ShowSelectUniverseTypeError
             return
         }
-
-        if (!matcherUrlImage.matches()) {
-            viewState.value = HeroRegisterViewState.ShowUrlImageError
-            return
-        }
-
 
 
         fetchLogin(name, description, age, birth_date, select_heroType, select_univerType, url_image)

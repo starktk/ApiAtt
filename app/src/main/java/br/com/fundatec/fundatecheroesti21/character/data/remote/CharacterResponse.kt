@@ -10,6 +10,6 @@ data class CharacterResponse (
         val image: String,
         val universeType: String,
         val characterType: String,
-        val age : Date,
-        val birthday: Date
+        val age : Int,
+//        val birthday: Date
 )

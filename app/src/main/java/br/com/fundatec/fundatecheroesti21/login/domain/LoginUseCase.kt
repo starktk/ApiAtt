@@ -18,7 +18,6 @@ class LoginUseCase {
         return repository.createUser(name, email, password)
     }
     suspend fun getIdUser(): Int {
-        val id: Int = repository.getUsuario()
-        return id
+        return repository.getUsuario()
     }
 }

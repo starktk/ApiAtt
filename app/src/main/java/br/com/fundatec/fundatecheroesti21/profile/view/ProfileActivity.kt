@@ -10,6 +10,7 @@ import br.com.fundatec.core.show
 import br.com.fundatec.fundatecheroesti21.R
 import br.com.fundatec.fundatecheroesti21.databinding.ActivityProfileBinding
 import br.com.fundatec.fundatecheroesti21.home.view.HomeActivity
+import br.com.fundatec.fundatecheroesti21.login.view.LoginActivity
 import br.com.fundatec.fundatecheroesti21.profile.presentation.ProfileViewModel
 import br.com.fundatec.fundatecheroesti21.profile.presentation.model.ProfileViewState
 
@@ -79,7 +80,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun showHome() {
         binding.pbLoading.hide()
-        val intent = Intent(this@ProfileActivity, HomeActivity::class.java)
+        val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

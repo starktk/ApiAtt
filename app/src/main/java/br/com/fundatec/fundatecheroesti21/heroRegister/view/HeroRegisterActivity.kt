@@ -32,8 +32,8 @@ class HeroRegisterActivity : AppCompatActivity() {
                 description = binding.description.text.toString(),
                 age = binding.age.text.toString(),
                 birth_date = binding.birthDate.text.toString(),
-                select_heroType = binding.selectHero.onItemSelectedListener.toString(),
-                select_univerType = binding.selectUniverse.onItemSelectedListener.toString(),
+                select_heroType = binding.selectHero.selectedItem.toString(),
+                select_univerType = binding.selectUniverse.selectedItem.toString(),
                 url_image = binding.imgHero.text.toString()
             )
         }

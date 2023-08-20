@@ -18,7 +18,7 @@ abstract class FHdatabase: RoomDatabase() {
                 App.context,
                 FHdatabase::class.java,
                 "fh.database"
-            ).allowMainThreadQueries().build()
+            ).allowMainThreadQueries().fallbackToDestructiveMigration().build()
         }
     }
 }

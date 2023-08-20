@@ -23,7 +23,7 @@ class CharacterRepository {
 
     suspend fun addPersonagem(id: Int, characterRequest: CharacterRequest): Boolean {
         return withContext(Dispatchers.IO) {
-            try  {
+            try {
                 val response = client.criarPersonagem(id, characterRequest)
                 response.isSuccessful
             } catch (exception: Exception) {
@@ -34,10 +34,10 @@ class CharacterRepository {
     }
 
     suspend fun getPersonagens(id: Int): List<CharacterModel> {
-          return withContext(Dispatchers.IO) {
+        return withContext(Dispatchers.IO) {
             try {
                 val characterReturn = client.getPersonagens(id)
-                if (characterReturn.isSuccessful){
+                if (characterReturn.isSuccessful) {
                     characterReturn.body()?.mapperPersonagem() ?: emptyList()
                 } else {
                     emptyList()
